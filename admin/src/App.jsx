@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
-  const url = "http://localhost:4000";
+  const url = "https://backend-foodapp-1.onrender.com";
 
   return (
     <BrowserRouter>
