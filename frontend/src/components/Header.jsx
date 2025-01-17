@@ -33,7 +33,7 @@ const Header = ({ setShowLogin }) => {
 
     const checkUrl = () => {
       const currentUrl = window.location.href;
-      if (currentUrl !== "http://localhost:5174/") {
+      if (currentUrl !== "https://backend-foodapp-1.onrender.com") {
         setHeader(true);
       } else {
         window.addEventListener("scroll", handleScroll);
