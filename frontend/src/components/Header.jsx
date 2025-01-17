@@ -13,7 +13,7 @@ const Header = ({ setShowLogin }) => {
   const [menuOpened, setMenuOpened] = useState(false);
   const [header, setHeader] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); // React Router hook to access the current URL
+  const location = useLocation();
   const {getTotalCartItems,token,setToken} = useContext(ShopContext)
 
   const toggleMenu = () => {
@@ -33,7 +33,7 @@ const Header = ({ setShowLogin }) => {
 
     const checkUrl = () => {
       const currentUrl = window.location.href;
-      if (currentUrl !== "https://backend-foodapp-1.onrender.com") {
+      if (currentUrl !== http://localhost:5174/) {
         setHeader(true);
       } else {
         window.addEventListener("scroll", handleScroll);
