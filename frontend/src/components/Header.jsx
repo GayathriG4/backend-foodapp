@@ -14,7 +14,7 @@ const Header = ({ setShowLogin }) => {
   const [header, setHeader] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const {getTotalCartItems,token,setToken} = useContext(ShopContext)
+  const { getTotalCartItems, token, setToken } = useContext(ShopContext);
 
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
@@ -33,7 +33,7 @@ const Header = ({ setShowLogin }) => {
 
     const checkUrl = () => {
       const currentUrl = window.location.href;
-      if (currentUrl !== http://localhost:5174/) {
+      if (currentUrl !== "http://localhost:5174/") {
         setHeader(true);
       } else {
         window.addEventListener("scroll", handleScroll);
