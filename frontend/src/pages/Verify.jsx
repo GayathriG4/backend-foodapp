@@ -1,31 +1,35 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import axios from "axios";
 
 const Verify = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
-  // console.log(success,orderId)
   const { url } = useContext(ShopContext);
   const navigate = useNavigate();
 
   const verifyPayment = async () => {
-    const response = await axios.post(url + "/api/order/verify", {
-      success,
-      orderId,
-    });
-    if (response.data.success) {
-      navigate("/myorders");
-    } else {
+    try {
+      const response = await axios.post(`${url}/api/order/verify`, {
+        success,
+        orderId,
+      });
+      if (response.data.success) {
+        navigate("/myorders");
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error verifying payment:", error);
       navigate("/");
     }
   };
 
-  useEffect(()=>{
-    verifyPayment()
-  },[])
+  useEffect(() => {
+    verifyPayment();
+  }, []);
 
   return (
     <section>
