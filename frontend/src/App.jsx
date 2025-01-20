@@ -11,18 +11,19 @@ import Verify from "./pages/Verify";
 import MyOrders from "./pages/MyOrders";
 
 export default function App() {
-
-  const [showLogin, setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <div className="overflow-hidden text-[#404040]">
       <BrowserRouter>
         <div className="bg-primary">
-          {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
-          <Header setShowLogin={setShowLogin}/>
+          {/* Show Login Popup if user is not logged in */}
+          {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
+          <Header setShowLogin={setShowLogin} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/product" element={<Product />}>
+            <Route path="/product">
+              <Route index element={<Product />} />
               <Route path=":productId" element={<Product />} />
             </Route>
             <Route path="/cart" element={<Cart />} />
